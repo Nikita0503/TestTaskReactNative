@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {orderService} from '../../../redux/database/databaseActions'
+import {orderService, updateUser} from '../../../redux/database/databaseActions'
 import SelectedPlaceScreen from './SelectedPlaceScreen';
 
 class SelectedPlaceContainer extends React.Component {
@@ -11,6 +11,7 @@ class SelectedPlaceContainer extends React.Component {
                 currentUser={this.props.currentUser}
                 selectedPlace={this.props.selectedPlace}
                 orderService={this.props.orderService}
+                updateUser={this.props.updateUser}
             />
         )
     }
@@ -24,7 +25,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    orderService
+    orderService,
+    updateUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectedPlaceContainer);

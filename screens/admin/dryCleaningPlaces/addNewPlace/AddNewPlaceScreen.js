@@ -134,7 +134,7 @@ export default class AddNewPlaceScreen extends Component {
                 return
               }
               this.props.addDryCleaningPlace({
-                id: this.props.dryCleaningPlaces.length + 1,
+                id: new Date().getTime(),
                 name: this.props.name,
                 description: this.props.description,
                 services: this.props.services,

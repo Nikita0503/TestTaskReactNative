@@ -58,14 +58,21 @@ export const deleteOrder = (order) => ({
 
 export const orderService = (currentUser, service) => {
     return async dispatch => {
-        currentUser.balance -= service.cost;
-        dispatch(updateUser(currentUser));
-        dispatch(setCurrentUser(currentUser));
+        var user = currentUser;
+        user.balance -= service.cost;
+        dispatch(updateUser(user));
+        dispatch(setCurrentUser(user));
+        const date = new Date();
+        let dateOfCreating = date.getFullYear()
+        dateOfCreating += "."
+        dateOfCreating += parseInt(date.getMonth()) + 1
+        dateOfCreating += "."
+        dateOfCreating += date.getDate();
         dispatch(addOrder({
             id: new Date().getTime(),
-            client: currentUser,
+            client: user,
             service: service,
-            date: new Date(),
+            date: dateOfCreating,
             status: ORDER_STATUS_NEW
         }))               
     }
